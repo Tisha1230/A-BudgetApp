@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudApp.EnterBudget">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Enter your Budget"
+                   TextColor="Purple"
+                   FontSize="Large"
+                   FontFamily="Arial"/>
+
+            <Editor x:Name="SetBudgetEditor"
+                    Placeholder="Enter budget here"
+                    FontSize="Medium"
+                    HeightRequest="60"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="1"
+                        Text="Save"
+                        BackgroundColor="Aqua"
+                        TextColor="Green"
+                        Clicked="OnSaveButtonClicked"/>
+
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Text="Delete"
+                        BackgroundColor="Aqua"
+                        TextColor="Red"
+                        Clicked="OnDeleteButtonClicked"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

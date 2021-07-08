@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudApp.AddExpenseDetails"
+             Title="Add Expense">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Expense Description"
+                   TextColor="Purple"
+                   FontSize="Large"
+                   FontFamily="Arial"/>
+            <Editor x:Name="ExpenseDescription"
+                    Placeholder="Description"
+                    FontSize="Medium"
+                    HeightRequest="60"/>
+
+            <Label Text="Amount Spent"
+                   TextColor="Purple"
+                   FontSize="Large"
+                   FontFamily="Arial"/>
+            <Editor x:Name="AmountSpent"
+                    Placeholder="$"
+                    FontSize="Medium"
+                    HeightRequest="60"/>
+
+            <Label Text="Date of Purchase"
+                   TextColor="Purple"
+                   FontSize="Large"
+                   FontFamily="Arial"/>
+            <Editor x:Name="Date"
+                    Placeholder="mm/dd/yyyy"
+                    FontSize="Medium"
+                    HeightRequest="60"/>
+
+            <Label Text="Select A Category"
+                   TextColor="Purple"
+                   FontSize="Large"
+                   FontFamily="Arial"/>
+
+            <Picker x:Name="SelectCategory" 
+                    Title="Select A Category"
+                    TitleColor="Purple">
+
+                <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                        <x:String>Home</x:String>
+                    <x:String>Food</x:String>
+                    <x:String>Groceries</x:String>
+                    <x:String>Insurance</x:String>
+                        <x:String>Travel</x:String>
+                    <x:String>Shopping</x:String>
+                    <x:String>Misc</x:String>
+                </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Grid.Row="1"
+                        Text="Save"
+                        BackgroundColor="Aqua"
+                        TextColor="Green"
+                        Clicked="OnSaveButtonClicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
