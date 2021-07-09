@@ -23,7 +23,7 @@ namespace BudApp
         private void OnSaveButtonClicked(object sender, EventArgs e)
         {
             BudgetManager budgetManager = new BudgetManager();
-
+            ExpenseManager expenseManager = new ExpenseManager();
 
             //string BudgetFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             //"BudgetSetFile.txt");
@@ -36,7 +36,7 @@ namespace BudApp
                 App.BudgetAmount = temp;
 
                 budgetManager.SaveBudget(temp);
-
+                expenseManager.Reset();
                 Application.Current.MainPage = new NavigationPage(new ExpenseView());
             }
             else

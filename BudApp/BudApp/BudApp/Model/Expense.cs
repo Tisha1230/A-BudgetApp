@@ -11,5 +11,6 @@ namespace BudApp.Model
         public double AmountSpent { get; set; }
         public string Date { get; set; }
         public ExpenseCategory Category { get; set; }
+        public string CategoryImage { get; set; }
     }
 }

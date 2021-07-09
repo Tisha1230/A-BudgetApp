@@ -77,8 +77,55 @@
                         WidthRequest="60"
                         Clicked="AddExpense_Clicked"/>
 
+                
+
             </StackLayout>
-            
+
+            <StackLayout Grid.Row="1" 
+                     Orientation="Horizontal" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Center" 
+                     BackgroundColor="#3F539F">
+                <ListView  x:Name="listView" ItemsSource="{Binding ListOfExpenses}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+
+                                <Grid BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.96*"></RowDefinition>
+                                        <RowDefinition Height="0.04*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid RowSpacing="0" Padding="20, 5, 20, 5" BackgroundColor="White" Grid.Row="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.60*"></RowDefinition>
+                                            <RowDefinition Height="0.40*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Grid.RowSpan="2"
+                                               WidthRequest="100"
+                                               HorizontalOptions= "FillAndExpand">
+                                            <Image.Source>
+                                                <FileImageSource File="{Binding CategoryImage}" />
+                                            </Image.Source>
+                                        </Image>
+                                        <Label Text="{Binding Description}" FontFamily="Roboto-Medium" TextColor="#4D4D4D" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Start"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:MMM/dd/yyyy}'}" FontSize="10" FontFamily="Roboto-Regular" TextColor="#4D4D4D" Grid.Row="1" Grid.Column="1"/>
+                                        <Label Text="{Binding AmountSpent, StringFormat='${0:N}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" />
+                                    </Grid>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

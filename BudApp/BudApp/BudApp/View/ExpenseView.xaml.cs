@@ -21,12 +21,16 @@ namespace BudApp
         private void OnResetButtonClicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new EnterBudget());
-        
         }
 
         private void AddExpense_Clicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new AddExpenseDetails());
+        }
+
+        private void OnExpenseListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 } 

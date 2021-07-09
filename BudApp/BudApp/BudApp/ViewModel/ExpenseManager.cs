@@ -14,6 +14,8 @@ namespace BudApp
         private double balance;
         public ObservableCollection<Expense> ListOfExpenses { get; set; }
 
+        private string savePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Expense.json";
+
         public ExpenseManager()
         {
             ListOfExpenses = new ObservableCollection<Expense>();
@@ -27,7 +29,7 @@ namespace BudApp
 
         public void SaveExpenseDetails(Expense saveExpense)
         {
-            string savePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Expense.json";
+           
             //string fileName = $@"{savePath}\"
 
             ListOfExpenses.Add(saveExpense);
@@ -37,12 +39,22 @@ namespace BudApp
 
         }
 
+        //Resets all
+        public void Reset()
+        {
+            if(File.Exists(savePath))
+            {
+                File.Delete(savePath);
+            }
+        }
+
         private void ReadExpenseDetails()
         {
-            string savePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Expense.json";
-
-            string readFile = System.IO.File.ReadAllText(savePath);
-            this.ListOfExpenses = JsonConvert.DeserializeObject<ObservableCollection<Expense>>(readFile);
+            if (File.Exists(savePath))
+            { 
+                string readFile = System.IO.File.ReadAllText(savePath);
+                this.ListOfExpenses = JsonConvert.DeserializeObject<ObservableCollection<Expense>>(readFile);
+            }
         }
 
 
