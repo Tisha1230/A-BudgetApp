@@ -28,10 +28,11 @@
                    TextColor="Purple"
                    FontSize="Large"
                    FontFamily="Arial"/>
-            <Editor x:Name="Date"
-                    Placeholder="mm/dd/yyyy"
-                    FontSize="Medium"
-                    HeightRequest="60"/>
+
+
+            <DatePicker x:Name="PickDateEditor" 
+                        MinimumDate="07/01/2021"
+                        MaximumDate="07/31/2021"/>
 
             <Label Text="Select A Category"
                    TextColor="Purple"

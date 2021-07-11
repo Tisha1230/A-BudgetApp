@@ -9,6 +9,7 @@ namespace BudApp
     public partial class App : Application
     {
         public static double BudgetAmount { get; set; }
+        public static double AmountSpent { get; set; }
 
         public App()
         {
@@ -21,13 +22,19 @@ namespace BudApp
 
             if (totalBudget == 0)
             {
+                AmountSpent = 0;
                 MainPage = new NavigationPage(new EnterBudget());
             }
             else
             {
                 BudgetAmount = totalBudget;
+                ExpenseManager expenseManager = new ExpenseManager();
+                AmountSpent = expenseManager.GetAmountSpent();
                 MainPage = new NavigationPage(new ExpenseView());
+
             }
+
+
             ////combine base folder with special folder and file location
             
 

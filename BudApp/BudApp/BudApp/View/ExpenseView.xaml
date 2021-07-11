@@ -8,76 +8,82 @@
         <local:ExpenseManager/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand"  BackgroundColor="#3F539F">
+        <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="#3F539F">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
+                <RowDefinition Height="140" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-            <StackLayout Grid.Row="0" 
-                     Orientation="Horizontal" 
-                     VerticalOptions="Center" 
+            
+            <StackLayout  Grid.Row="0"
+                     Orientation="Vertical" 
                      HorizontalOptions="Center" 
                      BackgroundColor="#3F539F">
-                
 
-                <StackLayout>
-                    <Label Text=" Total Budget" FontSize="Medium" TextColor="#FDD406" VerticalOptions="Start" HorizontalTextAlignment="Center"/>
-                    <Label FontSize="Large" Text="{Binding TotalBudget, StringFormat='${0:N}'}" TextColor="White" 
-                       VerticalOptions="Center" />
+                <StackLayout Orientation="Horizontal"
+                             Grid.Column="0">
+
+                    <Label Text="Total Budget =" 
+                           FontSize="Medium" 
+                           TextColor="#FDD406"  
+                           VerticalOptions="Start" 
+                           HorizontalTextAlignment="Center"  
+                           HorizontalOptions="End"/>
+                    <Label FontSize="Medium"
+                           Text="{Binding TotalBudget, StringFormat='${0:N}'}" 
+                           TextColor="White"/>
+
+                    <!--<Button x:Name="ResetBudget"
+                        Text="Reset"
+                        TextColor="Red"
+                        FontSize="14"
+                        WidthRequest="90"
+                        Margin="100,0,0,-30"
+                        Clicked="OnResetButtonClicked"/>-->
                 </StackLayout>
-                <BoxView Color="White" WidthRequest="1"/>
 
-                <StackLayout Margin="0,0,15,0" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="End">
-                    <Label Text="Spent" 
+                <StackLayout Orientation="Horizontal">
+                <Label Text="Spent =" 
                        FontSize="Medium" 
                        TextColor="#FDD406" 
-                       VerticalOptions="Center" 
+                       VerticalOptions="Start"
                        HorizontalTextAlignment="Center" 
                        HorizontalOptions="End" />
-                    <Label FontSize="Large" 
+                    
+                    <Label FontSize="Medium" 
                        Text="{Binding Spent, StringFormat='${0:N}'}" 
                        TextColor="White" 
-                       VerticalOptions="Center" 
                        HorizontalTextAlignment="End" 
                        HorizontalOptions="Center" />
                 </StackLayout>
 
-                <BoxView Color="White" WidthRequest="1"/>
-                <StackLayout Margin="15,0,0,0" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="Start">
-                    
-                    <Label Text="Left" 
+                <StackLayout Orientation="Horizontal"
+                             Grid.Column="0">
+
+                    <Label Text="Left =" 
                            FontSize="Medium" 
                            TextColor="#FDD406" 
-                           VerticalOptions="Center" 
                            HorizontalTextAlignment="Center" 
                            HorizontalOptions="Start" />
-                    <Label FontSize="Large" 
+                    
+                    <Label FontSize="Medium" 
                            TextColor="White" 
                            Text="{Binding Balance, StringFormat='${0:N}'}"
-                           VerticalOptions="Center" 
                            HorizontalTextAlignment="Start" 
                            HorizontalOptions="Center" />
                 </StackLayout>
-
-                <Button x:Name="ResetBudget"
-                        Text="Reset"
-                        TextColor="Red"
-                        FontSize="Micro"
-                        Margin="60,0,0,80"
-                        WidthRequest="60"
-                        Clicked="OnResetButtonClicked"/>
-
+                
+                
+                <StackLayout>
                 <Button x:Name="AddExpense"
-                        Text="+"
-                        TextColor="Red"
-                        FontSize="Micro"
-                        Margin="-66,30,0,50"
-                        WidthRequest="60"
+                        Text="Add Expense"
+                        TextColor="DarkBlue"
+                        FontSize="Small"
+                        Margin="0,0,0,20"
+                        WidthRequest="90"
                         Clicked="AddExpense_Clicked"/>
 
-                
+                </StackLayout>
 
             </StackLayout>
 
@@ -98,13 +104,13 @@
                                         <RowDefinition Height="0.04*"></RowDefinition>
                                     </Grid.RowDefinitions>
 
-                                    <Grid RowSpacing="0" Padding="20, 5, 20, 5" BackgroundColor="White" Grid.Row="0">
+                                    <Grid RowSpacing="0" Padding="20,5,20,-5" BackgroundColor="White" Grid.Row="0">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="0.60*"></RowDefinition>
-                                            <RowDefinition Height="0.40*"></RowDefinition>
+                                            <RowDefinition Height="0.90*"></RowDefinition>
+                                            <RowDefinition Height="0.80*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="0.1*"></ColumnDefinition>
                                             <ColumnDefinition Width="0.6*"></ColumnDefinition>
                                             <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
@@ -115,9 +121,13 @@
                                                 <FileImageSource File="{Binding CategoryImage}" />
                                             </Image.Source>
                                         </Image>
-                                        <Label Text="{Binding Description}" FontFamily="Roboto-Medium" TextColor="#4D4D4D" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Start"/>
-                                        <Label Text="{Binding Date, StringFormat='{0:MMM/dd/yyyy}'}" FontSize="10" FontFamily="Roboto-Regular" TextColor="#4D4D4D" Grid.Row="1" Grid.Column="1"/>
-                                        <Label Text="{Binding AmountSpent, StringFormat='${0:N}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" />
+                                        <Label Text="{Binding Description}" FontFamily="Roboto-Medium" TextColor="#4D4D4D" FontSize="14" 
+                                               Grid.Row="0"  Grid.Column="1" VerticalTextAlignment="Start"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:MMM/dd/yyyy}'}" FontSize="10" FontFamily="Roboto-Regular" TextColor="#4D4D4D" 
+                                               Grid.Row="1" Grid.Column="1"/>
+                                        <Label Text="{Binding AmountSpent, StringFormat='${0:N}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" 
+                                               VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" 
+                                               Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" />
                                     </Grid>
                                 </Grid>
                             </ViewCell>

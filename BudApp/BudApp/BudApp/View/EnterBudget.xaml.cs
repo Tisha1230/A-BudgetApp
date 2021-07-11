@@ -41,6 +41,7 @@ namespace BudApp
             }
             else
             {
+                DisplayAlert("Validation Failed", "Budget needs to be a number", "OK"); //validation to catch user's errors
                 SetBudgetEditor.Text = string.Empty;
             }
         }

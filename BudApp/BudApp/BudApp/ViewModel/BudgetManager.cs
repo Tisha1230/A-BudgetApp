@@ -7,8 +7,10 @@ namespace BudApp.ViewModel
 {
     public class BudgetManager
     {
-        private string BudgetFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "BudgetSetFile.txt");
+       private string BudgetFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            $"{DateTime.Now.ToString("MMMM")}"+"BudgetSetFile.txt");
+
+        private int a = 0;
 
         public double SaveBudget(double budgetAmount)
         {

@@ -25,39 +25,64 @@ namespace BudApp
             ExpenseManager expenseManager = new ExpenseManager();
             Expense expense = new Expense();
             expense.Description = ExpenseDescription.Text;
-            expense.AmountSpent = double.Parse(AmountSpent.Text);
-            expense.Date = Date.Text;
-            expense.Category = (ExpenseCategory)Enum.Parse(typeof(ExpenseCategory), (string)SelectCategory.SelectedItem);
 
-            switch(expense.Category)
+            if(string.IsNullOrEmpty(expense.Description)) //validation to catch user's errors
             {
-                case ExpenseCategory.Food:
+                DisplayAlert("Validation Failed","Description Cannot be Empty", "OK");
+                return;
+                
+            }
+
+            double temp = 0;
+            if (!double.TryParse(AmountSpent.Text, out temp))
+            {
+                DisplayAlert("Validation Failed", "AmountSpent needs to be a number", "OK"); //validation to catch user's errors
+                return;
+
+            }
+
+            expense.AmountSpent = temp;
+
+            expense.Date = PickDateEditor.Date.ToShortDateString();
+
+            if (SelectCategory.SelectedItem == null)
+            {
+                DisplayAlert("Validation Failed", "Need to select a category", "OK"); //validation to catch user's errors
+                return;
+            }
+
+            string category = (string)SelectCategory.SelectedItem;
+            switch (category)
+            {
+                case "Food":
                     expense.CategoryImage = "Food.png";
                     break;
 
-                case ExpenseCategory.Groceries:
+                case "Groceries":
                     expense.CategoryImage = "Groceries.jfif";
                     break;
-                case ExpenseCategory.Home:
+                case "Home":
                     expense.CategoryImage = "Home1.png";
                     break;
-                case ExpenseCategory.Insurance:
+                case "Insurance":
                     expense.CategoryImage = "Insurance.jfif";
                     break;
-                case ExpenseCategory.Misc:
+                case "Misc":
                     expense.CategoryImage = "misc.png";
                     break;
-                case ExpenseCategory.Shopping:
+                case "Shopping":
                     expense.CategoryImage = "Shopping.jfif";
                     break;
-                case ExpenseCategory.Travel:
+                case "Travel":
                     expense.CategoryImage = "Travel.png";
                     break;
             }
 
-            
+
 
             expenseManager.SaveExpenseDetails(expense);
+
+            App.AmountSpent = expenseManager.GetAmountSpent();
 
             Application.Current.MainPage = new NavigationPage(new ExpenseView());
         }

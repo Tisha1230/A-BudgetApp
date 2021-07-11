@@ -22,6 +22,17 @@ namespace BudApp
             ReadExpenseDetails();
         }
 
+        public double GetAmountSpent()
+        {
+            double result = 0;
+            foreach (var expense in ListOfExpenses)
+            {
+                result = result + expense.AmountSpent;
+            }
+
+            return result; 
+        }
+
         public void AddExpenseDetails(Expense expense)
         {
             ListOfExpenses.Add(expense);
@@ -69,7 +80,7 @@ namespace BudApp
         //gets and set total amount spent
         public double Spent
         {
-            get { return spent; }
+            get { return App.AmountSpent; }
             set
             {
                 spent = value;
@@ -80,7 +91,7 @@ namespace BudApp
         //gets and sets total remaining amount
         public double Balance
         {
-            get { return balance; }
+            get { return (TotalBudget - Spent); }
             set
             {
                 balance = value;

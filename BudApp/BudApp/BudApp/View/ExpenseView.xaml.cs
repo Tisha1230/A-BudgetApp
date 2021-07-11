@@ -21,6 +21,11 @@ namespace BudApp
         private void OnResetButtonClicked(object sender, EventArgs e)
         {
             Application.Current.MainPage = new NavigationPage(new EnterBudget());
+
+            App.AmountSpent = 0;
+            ExpenseManager expenseManager = new ExpenseManager();
+            expenseManager.Balance = 0;
+                
         }
 
         private void AddExpense_Clicked(object sender, EventArgs e)
