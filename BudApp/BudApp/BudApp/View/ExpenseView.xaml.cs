@@ -33,9 +33,6 @@ namespace BudApp
             Application.Current.MainPage = new NavigationPage(new AddExpenseDetails());
         }
 
-        private void OnExpenseListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-        }
+        
     }
 } 

@@ -10,7 +10,7 @@ namespace BudApp.Model
         public string Description { get; set; }
         public double AmountSpent { get; set; }
         public string Date { get; set; }
-        public ExpenseCategory Category { get; set; }
+        public string Category { get; set; }
         public string CategoryImage { get; set; }
     }
 }

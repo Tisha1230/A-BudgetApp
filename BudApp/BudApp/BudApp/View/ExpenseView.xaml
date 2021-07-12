@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudApp.ExpenseView" xmlns:local="clr-namespace:BudApp"
-             Title="Expenses">
+             Title="Monthly Expenses">
 
     <ContentPage.BindingContext>
         <local:ExpenseManager/>
@@ -33,17 +33,17 @@
                            Text="{Binding TotalBudget, StringFormat='${0:N}'}" 
                            TextColor="White"/>
 
-                    <!--<Button x:Name="ResetBudget"
+                    <Button x:Name="ResetBudget"
                         Text="Reset"
                         TextColor="Red"
                         FontSize="14"
                         WidthRequest="90"
                         Margin="100,0,0,-30"
-                        Clicked="OnResetButtonClicked"/>-->
+                        Clicked="OnResetButtonClicked"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                <Label Text="Spent =" 
+                <Label Text="Amount Spent =" 
                        FontSize="Medium" 
                        TextColor="#FDD406" 
                        VerticalOptions="Start"
@@ -60,7 +60,7 @@
                 <StackLayout Orientation="Horizontal"
                              Grid.Column="0">
 
-                    <Label Text="Left =" 
+                    <Label Text="Amount Left =" 
                            FontSize="Medium" 
                            TextColor="#FDD406" 
                            HorizontalTextAlignment="Center" 
@@ -114,6 +114,7 @@
                                             <ColumnDefinition Width="0.6*"></ColumnDefinition>
                                             <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
+                                        
                                         <Image Grid.Column="0" Grid.RowSpan="2"
                                                WidthRequest="100"
                                                HorizontalOptions= "FillAndExpand">
@@ -121,11 +122,14 @@
                                                 <FileImageSource File="{Binding CategoryImage}" />
                                             </Image.Source>
                                         </Image>
+                                        
                                         <Label Text="{Binding Description}" FontFamily="Roboto-Medium" TextColor="#4D4D4D" FontSize="14" 
                                                Grid.Row="0"  Grid.Column="1" VerticalTextAlignment="Start"/>
+                                        
                                         <Label Text="{Binding Date, StringFormat='{0:MMM/dd/yyyy}'}" FontSize="10" FontFamily="Roboto-Regular" TextColor="#4D4D4D" 
                                                Grid.Row="1" Grid.Column="1"/>
-                                        <Label Text="{Binding AmountSpent, StringFormat='${0:N}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" 
+
+                                        <Label Text="{Binding AmountSpent, StringFormat='${0:N}'}" FontSize="14" TextColor="#4D4D4D" FontFamily="Roboto-Medium" 
                                                VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" 
                                                Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" />
                                     </Grid>

@@ -7,16 +7,17 @@ namespace BudApp.ViewModel
 {
     public class BudgetManager
     {
+        //Path where budgetfile is stored. DateTime is set to now 
        private string BudgetFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             $"{DateTime.Now.ToString("MMMM")}"+"BudgetSetFile.txt");
 
-        private int a = 0;
-
+        //saving the entered budget
         public double SaveBudget(double budgetAmount)
         {
             File.WriteAllText(BudgetFileName, budgetAmount.ToString());
             return budgetAmount;
         }
+
 
         public double ReadBudget()
         {

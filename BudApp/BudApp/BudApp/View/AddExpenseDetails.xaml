@@ -13,7 +13,7 @@
             <Editor x:Name="ExpenseDescription"
                     Placeholder="Description"
                     FontSize="Medium"
-                    HeightRequest="60"/>
+                    HeightRequest="40"/>
 
             <Label Text="Amount Spent"
                    TextColor="Purple"
@@ -22,7 +22,7 @@
             <Editor x:Name="AmountSpent"
                     Placeholder="$"
                     FontSize="Medium"
-                    HeightRequest="60"/>
+                    HeightRequest="40"/>
 
             <Label Text="Date of Purchase"
                    TextColor="Purple"
@@ -41,7 +41,7 @@
 
             <Picker x:Name="SelectCategory" 
                     Title="Select A Category"
-                    TitleColor="Purple">
+                   >
 
                 <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -58,12 +58,12 @@
 
             <Button Grid.Row="1"
                         Text="Save"
-                        BackgroundColor="LightGray"
+                        FontSize="Medium"
                         TextColor="Green"
                         Clicked="OnSaveButtonClicked"/>
             <Button Grid.Row="1"
                         Text="Cancel"
-                        BackgroundColor="LightGray"
+                        FontSize="Medium"
                         TextColor="Red"
                         Clicked="OnCancelButtonClicked"/>
 

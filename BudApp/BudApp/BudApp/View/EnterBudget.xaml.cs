@@ -37,7 +37,7 @@ namespace BudApp
 
                 budgetManager.SaveBudget(temp);
                 expenseManager.Reset();
-                Application.Current.MainPage = new NavigationPage(new ExpenseView());
+                Application.Current.MainPage = new NavigationPage(new ExpenseView()); //after budget is set it displays ExpenseView
             }
             else
             {

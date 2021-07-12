@@ -24,6 +24,7 @@ namespace BudApp
         {
             ExpenseManager expenseManager = new ExpenseManager();
             Expense expense = new Expense();
+
             expense.Description = ExpenseDescription.Text;
 
             if(string.IsNullOrEmpty(expense.Description)) //validation to catch user's errors

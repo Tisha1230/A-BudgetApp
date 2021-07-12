@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
+using System.Linq;
 using BudApp.Model;
 using Newtonsoft.Json;
 
@@ -14,6 +15,7 @@ namespace BudApp
         private double balance;
         public ObservableCollection<Expense> ListOfExpenses { get; set; }
 
+        //path where json object is saved
         private string savePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Expense.json";
 
         public ExpenseManager()
@@ -22,6 +24,7 @@ namespace BudApp
             ReadExpenseDetails();
         }
 
+        //Calculates amount spent
         public double GetAmountSpent()
         {
             double result = 0;
@@ -33,32 +36,17 @@ namespace BudApp
             return result; 
         }
 
-        public void AddExpenseDetails(Expense expense)
-        {
-            ListOfExpenses.Add(expense);
-        }
-
         public void SaveExpenseDetails(Expense saveExpense)
         {
-           
-            //string fileName = $@"{savePath}\"
-
             ListOfExpenses.Add(saveExpense);
-            string expenseFile = JsonConvert.SerializeObject(ListOfExpenses);
+            string expenseFile = JsonConvert.SerializeObject(ListOfExpenses); //converts string to json object 
 
-            System.IO.File.WriteAllText(savePath, expenseFile);
+            System.IO.File.WriteAllText(savePath, expenseFile);//saving the converted json object
 
         }
 
-        //Resets all
-        public void Reset()
-        {
-            if(File.Exists(savePath))
-            {
-                File.Delete(savePath);
-            }
-        }
 
+        //converts json object to string and reads it if file exists
         private void ReadExpenseDetails()
         {
             if (File.Exists(savePath))
@@ -68,9 +56,17 @@ namespace BudApp
             }
         }
 
+        //Resets the entered budget
+        public void Reset()
+        {
+            if (File.Exists(savePath))
+            {
+                File.Delete(savePath);
+            }
+        }
 
-        
-       public double TotalBudget
+        //gets total monthly budget entered
+        public double TotalBudget
         {
             get { return App.BudgetAmount; }
             set
@@ -84,18 +80,18 @@ namespace BudApp
             set
             {
                 spent = value;
-                //NotifyPropertyChanged("Spent");
+               
             }
         }
 
         //gets and sets total remaining amount
         public double Balance
         {
-            get { return (TotalBudget - Spent); }
+            get { return (TotalBudget - Spent); } //returns balance left 
             set
             {
-                balance = value;
-                //NotifyPropertyChanged("Balance");
+                balance = value; 
+               
             }
         }
 
